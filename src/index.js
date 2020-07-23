@@ -42,11 +42,9 @@ class Clock extends React.Component{
 
 
 /* Show Time */
-let showTime = function(){
-	ReactDOM.render(
-		<Clock/>,
-		document.getElementById('root')
-	);
-}
+ReactDOM.render(
+	<Clock/>,
+	document.getElementById('root')
+);
 
-setInterval(showTime,1000);
+
