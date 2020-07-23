@@ -6,44 +6,31 @@
 import React from 'react'
 import ReactDOM from 'react-dom' 
 
-/* Get current time */
+class Inc extends React.Component{
 
-
-class Clock extends React.Component{
-	
 	constructor(props){
 		super(props);
 		this.state = {
-			date : new Date
-		}
+			counter : 0
+		};
+		//this.increment = this.increment.bind(this);
 	}
 
-
-	componentDidMount(){
-		/* Update clock time after 1 second */
-		this.timer = setInterval( () => this.start(),1000);
-	}
-
-	componentWillUnmount(){
-		clearInterval(this.timer);
-	}
-
-	start(){
+	increment = (e) => {
 		this.setState({
-			date : new Date()
+			counter : this.state.counter + 1
 		});
 	}
-	
+
 	render(){
-		return <h1>Time now:- {this.state.date.toLocaleTimeString()}</h1>
+		return <button onClick={this.increment}>Value is {this.state.counter}</button>
 	}
+
 }
 
 
-
-/* Show Time */
 ReactDOM.render(
-	<Clock/>,
+	<Inc/>,
 	document.getElementById('root')
 );
 
