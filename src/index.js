@@ -1,12 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-let clock = function (){
-	return <h1> Time now:- {new Date().toLocaleTimeString()} </h1>
+
+/* Using dynamic elements*/
+var name = 'Umer'
+var text = <div><h1 class="header-section">Welcome {name}</h1><h2> You will be enjoyed here </h2></div>
+
+/* Using object */
+let user = {
+	firstname : 'M Ahmad',
+	lastname : 'Raza'
 }
-setInterval(function(){
-	ReactDOM.render(
-		clock(),
-		document.getElementById('root')
-	);
-},1000);
+// <h1> Welcome { user.firstname} {user.lastname} </h1>,
+
+// Using functions
+let cartoon = function(name,show) {
+	return <h1> Cartoon name is {name} and its show time is {show} </h1>
+}
+
+ReactDOM.render(
+	cartoon('doremon','9-11 AM'),
+	document.getElementById('root')
+);
