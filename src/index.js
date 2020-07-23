@@ -1,38 +1,47 @@
-/*
- * State handling 
- * Reuseablility and abstraction
-*/
-
 import React from 'react'
-import ReactDOM from 'react-dom' 
+import ReactDOM from 'react-dom'
 
-class Inc extends React.Component{
+class Message extends React.Component{
 
 	constructor(props){
 		super(props);
-		this.state = {
-			counter : 0
-		};
-		//this.increment = this.increment.bind(this);
 	}
 
-	increment = (e) => {
-
-		this.setState({
-			counter : this.state.counter + 1
-		});
+	render(){ 
+		if(this.props.value){
+			return <h1>This is first message</h1>		
+		}
+		else{
+		 	return <h1>This is second message</h1>
+		}
 	}
-
-	render(){
-		return <button onClick={this.increment}>Value is {this.state.counter}</button>
-	}
-
 }
 
 
+class Btn extends React.Component{
+	
+	handleClick = () => {
+		this.setState({
+			value : !this.state.value
+		});
+	}
+	
+	constructor(props){
+		super(props);
+		this.state = {value:true};
+	}
+	
+	render(){
+		return (
+				<div>
+					<button onClick={this.handleClick}>Change the message</button>
+					<Message value={this.state.value}/>
+				</div>
+			);	
+	}
+}
+
 ReactDOM.render(
-	<Inc/>,
+	<Btn/>,
 	document.getElementById('root')
 );
-
-
