@@ -17,6 +17,7 @@ class Inc extends React.Component{
 	}
 
 	increment = (e) => {
+
 		this.setState({
 			counter : this.state.counter + 1
 		});
