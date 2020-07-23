@@ -20,7 +20,7 @@ class Clock extends React.Component{
 
 
 	componentDidMount(){
-		/* Update clock time after 1 second */
+		/* Update clock time after 1 second to show current time*/
 		this.timer = setInterval( () => this.start(),1000);
 	}
 
