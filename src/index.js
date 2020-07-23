@@ -1,32 +1,52 @@
 /*
- * Always use first Capital letter for the component name
+ * State handling 
+ * Reuseablility and abstraction
 */
 
 import React from 'react'
 import ReactDOM from 'react-dom' 
 
-// Create component by function 
+/* Get current time */
 
-// let User = function(props){
-// 	return <h1>Hello {props.name}</h1>
-// };
 
-// Create component by class
+class Clock extends React.Component{
+	
+	constructor(props){
+		super(props);
+		this.state = {
+			date : new Date
+		}
+	}
 
-class User extends React.Component{
+
+	componentDidMount(){
+		/* Update clock time after 1 second */
+		this.timer = setInterval( () => this.start(),1000);
+	}
+
+	componentWillUnmount(){
+		clearInterval(this.timer);
+	}
+
+	start(){
+		this.setState({
+			date : new Date()
+		});
+	}
+	
 	render(){
-		return <h1>Hello {this.props.name} your team is {this.props.team}</h1>
+		return <h1>Time now:- {this.state.date.toLocaleTimeString()}</h1>
 	}
 }
 
-function Show(){
-	return <div>	
-				<User name = "Ahmad Raza" team = "Bayut"/>
-				<User name = "Hamza" team = "CRM"/>
-			</div>
+
+
+/* Show Time */
+let showTime = function(){
+	ReactDOM.render(
+		<Clock/>,
+		document.getElementById('root')
+	);
 }
 
-ReactDOM.render(
-	<Show/>,
-	document.getElementById('root')
-);
+setInterval(showTime,1000);
